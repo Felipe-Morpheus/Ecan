@@ -1,0 +1,10 @@
+spring.application.name=ecan
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/ecan-teste
+spring.datasource.username=postgres
+spring.datasource.password=123
+spring.datasource.ddl-auto=update
+
+
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect

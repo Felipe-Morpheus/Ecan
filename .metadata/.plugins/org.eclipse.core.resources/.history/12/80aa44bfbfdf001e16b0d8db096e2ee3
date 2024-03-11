@@ -1,0 +1,5 @@
+package com.teste.ecan.controllers;
+
+public class BeneficiarioController {
+
+}

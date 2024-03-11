@@ -1,0 +1,29 @@
+package com.teste.ecan.entities;
+
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Documento {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private String tipoDocumento;
+	private String descricao;
+	private Date dataInclusao;
+	private Date dataAtualizacao;
+
+	@ManyToOne
+	@JsonIgnore
+	private Beneficiario beneficiario;
+
+}

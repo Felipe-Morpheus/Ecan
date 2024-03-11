@@ -1,0 +1,45 @@
+package com.teste.ecan.services;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import com.teste.ecan.entities.Beneficiario;
+import com.teste.ecan.repositories.BeneficiarioRepository;
+
+@SpringBootTest
+class BeneficiarioServiceImplTest {
+
+    @Mock
+    private BeneficiarioRepository beneficiarioRepository;
+
+    @InjectMocks
+    private BeneficiarioServiceImpl beneficiarioService;
+
+    @Test
+    void testCadastrarBeneficiario() {
+        // Criar um Beneficiario para o teste
+        Beneficiario beneficiario = new Beneficiario();
+        beneficiario.setNome("João");
+
+        // Configurar o comportamento do repositório mock
+        when(beneficiarioRepository.save(any(Beneficiario.class))).thenReturn(beneficiario);
+
+        // Chamar o método de serviço
+        Beneficiario resultado = beneficiarioService.cadastrarBeneficiario(beneficiario);
+
+        // Verificar se o repositório save foi chamado
+        verify(beneficiarioRepository, times(1)).save(any(Beneficiario.class));
+
+        // Verificar se o resultado não é nulo
+        assertNotNull(resultado);
+
+        // Adicione mais verificações conforme necessário
+        assertEquals("João", resultado.getNome());
+    }
+
+    // Adicione mais testes conforme necessário para os outros métodos do serviço
+}
